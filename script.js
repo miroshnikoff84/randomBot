@@ -9,10 +9,13 @@ function isNum(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-const randomNumber = getRandomInt(100);
+
 console.log(randomNumber);
 
-function randomBot() {
+function start(){
+const randomNumber = getRandomInt(100);
+
+return function randomBot() {
   const num = prompt('Угадай число от 1 до 100');
 
   if (num === null) {
@@ -38,5 +41,7 @@ function randomBot() {
     randomBot();
   }
 }
+}
 
+let randomBot = start();
 randomBot();
