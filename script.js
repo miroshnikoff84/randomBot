@@ -9,10 +9,11 @@ function isNum(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-const randomNumber = getRandomInt(100);
-console.log(randomNumber);
 
-function randomBot() {
+function start(){
+const randomNumber = getRandomInt(100);
+
+return function randomBot() {
   const num = prompt('Угадай число от 1 до 100');
 
   if (num === null) {
@@ -23,20 +24,23 @@ function randomBot() {
   if (isNum(num)) {
     const realNum = +num;
 
-    if (realNum > randomNumber) {
-      alert('Загаданное число меньше');
-      randomBot();
-    }
-    if (realNum < randomNumber) {
-      alert('Загаданное число бльше');
-      randomBot();
-    }else {
-      alert('вы угадали!');
-    }
+      if (realNum > randomNumber) {
+        alert('Загаданное число меньше');
+        randomBot();
+      }
+      else if(realNum < randomNumber) {
+        alert('Загаданное число больше');
+        randomBot();
+      }else {
+        alert('вы угадали!');
+        return;
+      }
   } else {
     alert('Введите число');
     randomBot();
   }
 }
+}
 
+let randomBot = start();
 randomBot();
